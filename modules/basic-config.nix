@@ -1,16 +1,22 @@
 { config, pkgs, ... }:
 
 {
-    system.stateVersion = "24.05";
+    system.stateVersion = "24.11";
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
     # Define the root filesystem
-    fileSystems."/" = {
-        device = "/dev/vda1"; # Replace with your root device
-        fsType = "ext4";     # Adjust to your filesystem type
-    };
+    # fileSystems."/" = {
+    #     device = "/dev/vda1"; # Replace with your root device
+    #     fsType = "ext4";     # Adjust to your filesystem type
+    # };
+
+
+    # Basic networking for VM
+    networking.hostName = "nixos";
+    networking.useDHCP = true;
+
 
     # Example: Enable SSH and install packages
     services.openssh.enable = true;

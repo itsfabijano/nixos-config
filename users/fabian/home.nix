@@ -1,12 +1,5 @@
 { config, pkgs, config-nvim, ... }:
 
-let
-    secrets = import (builtins.path {
-        path = ./secrets.nix;
-        name = "secrets.nix";
-        filter = path: type: true;
-    });
-in
 {
     imports = [
         ./scripts.nix
@@ -24,8 +17,6 @@ in
         python3
         fzf
     ];
-
-    home.extraActivationPath = [ pkgs.git pkgs.openssh ];
 
     programs.zsh = {
         enable = true;
