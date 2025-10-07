@@ -5,7 +5,7 @@
         ./scripts.nix
     ];
 
-    home.stateVersion = "24.11";
+    home.stateVersion = "25.05";
 
     xdg.enable = true;
 
