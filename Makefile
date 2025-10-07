@@ -78,7 +78,7 @@ vm/bootstrap0:
 vm/bootstrap:
 	NIXUSER=root $(MAKE) vm/copy
 	NIXUSER=root $(MAKE) vm/switch
-	# $(MAKE) vm/secrets
+	$(MAKE) vm/secrets
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
 		sudo reboot; \
 	"
@@ -86,14 +86,16 @@ vm/bootstrap:
 # copy our secrets into the VM
 vm/secrets:
 	# GPG keyring
-	rsync -av -e 'ssh $(SSH_OPTIONS)' \
-		--exclude='.#*' \
-		--exclude='S.*' \
-		--exclude='*.conf' \
-		$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
+	# rsync -av -e 'ssh $(SSH_OPTIONS)' \
+	# 	--exclude='.#*' \
+	# 	--exclude='S.*' \
+	# 	--exclude='*.conf' \
+	# 	$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
 	# SSH keys
 	rsync -av -e 'ssh $(SSH_OPTIONS)' \
-		--exclude='environment' \
+		--exclude='archive' \
+		--exclude='known_hosts' \
+		--exclude='config.local' \
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
 
 # copy the Nix configurations into the VM.

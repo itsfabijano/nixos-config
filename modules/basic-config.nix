@@ -20,7 +20,11 @@
 
     environment.systemPackages = with pkgs; [
         zsh
-        neovim
+        htop
+        neofetch
+        git
+        which
+        clang
     ];
 
     users.defaultUserShell = pkgs.zsh;
