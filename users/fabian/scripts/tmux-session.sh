@@ -13,11 +13,7 @@ has_session() {
 }
 
 hydrate() {
-    if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-    elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
-    fi
+    tmux send-keys -t $1 "source tmux-session-init" c-M
 }
 
 
@@ -45,9 +41,9 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     hydrate $selected_name $selected
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! has_session $selected_name; then
     tmux new-session -ds $selected_name -c $selected
     hydrate $selected_name $selected
 fi
 
-tmux switch-client -t $selected_name
+switch_to $selected_name

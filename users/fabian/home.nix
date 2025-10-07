@@ -20,6 +20,9 @@
     programs.zsh = {
         enable = true;
         autosuggestion.enable = true;
+        shellAliases = {
+            vim = "nvim";
+        };
         oh-my-zsh = {
             enable = true;
             theme = "robbyrussell";

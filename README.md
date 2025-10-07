@@ -21,4 +21,3 @@ passwd
 5. VM restarts after the command has been executed
 
 ## TODO
-- open tmux with tmux-session from a non-tmux window
