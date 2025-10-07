@@ -92,10 +92,10 @@ vm/secrets:
 	# 	--exclude='*.conf' \
 	# 	$(HOME)/.gnupg/ $(NIXUSER)@$(NIXADDR):~/.gnupg
 	# SSH keys
+	ssh-copy-id -i ~/.ssh/id_rsa_nixbox.pub ${NIXUSER}@$(NIXADDR)
 	rsync -av -e 'ssh $(SSH_OPTIONS)' \
 		--exclude='archive' \
 		--exclude='known_hosts' \
-		--exclude='config.local' \
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
 
 # copy the Nix configurations into the VM.
