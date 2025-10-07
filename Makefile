@@ -25,11 +25,11 @@ copy:
 	sudo mkdir -p /tmp/nixos-config
 	sudo cp -f $(MAKEFILE_DIR)/.variables.json /tmp/nixos-config/.variables.json
 
-rebuild:
+switch:
 	$(MAKE) copy
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --impure --flake ".#${NIXNAME}"
 
-switch:
+hm-switch:
 	$(MAKE) copy
 	home-manager switch --flake . --impure
 
@@ -42,7 +42,7 @@ clean:
 
 update:
 	nix flake update
-	$(MAKE) rebuild
+	$(MAKE) switch
 
 # bootstrap a brand new VM. The VM should have NixOS ISO on the CD drive
 # and just set the password of the root user to "root". This will install

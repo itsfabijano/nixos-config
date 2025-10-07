@@ -5,29 +5,12 @@ in
 {
     imports = [
         ./scripts.nix
+        ./packages.nix
     ];
 
     home.stateVersion = "25.05";
 
     xdg.enable = true;
-
-    home.packages = with pkgs; [ 
-        git
-        nodejs
-        go
-        python3
-        fzf
-        zathura
-        dotnetCorePackages.dotnet_9.sdk
-        gh
-        htop
-        jq
-        ripgrep
-        tree
-        claude-code
-        codex
-        opencode
-    ];
 
     home.sessionVariables = {
         EDITOR = "nvim";
@@ -81,6 +64,7 @@ in
         userName = variables.git.default.userName;
         userEmail = variables.git.default.userEmail;
         extraConfig = {
+            push = { autoSetupRemote = true; };
             includeIf."gitdir:/home/fabian/repos/personal/" = {
                 path = "/home/fabian/repos/personal/.gitconfig";
             };
@@ -99,5 +83,10 @@ in
     '';
 
     xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/config.nvim";
+
+    programs.direnv = {
+        enable = true;
+        enableZshIntegration = true; 
+    };
 
 }

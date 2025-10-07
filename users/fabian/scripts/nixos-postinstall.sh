@@ -33,6 +33,20 @@ for repo_url in "${!TARGET_DIRS[@]}"; do
   fi
 done
 
+# Enable and start Docker service for the user
+echo "Enabling and starting Docker service for the user..." 
+systemctl --user enable --now docker
+
+if [ ! -f "$HOME/repos/personal/nixos-config/.variables.json" ]; then
+    echo "Copying .variables.json file to nixos-config..."
+    cp "/tmp/nixos-config/.variables.json" "$HOME/repos/personal/nixos-config/.variables.json"
+fi
+
+if [[ ! -f "$HOME/repos/personal/nixos-config/.env" && -f "/nix-config/.env" ]]; then
+    echo "Copying .env file to nixos-config..."
+    cp "/nix-config/.env" "$HOME/repos/personal/nixos-config/.env"
+fi
+
 # Final status message
 if [ $success -eq 1 ]; then
   echo "Dotfiles setup completed successfully!"
@@ -41,5 +55,3 @@ else
   exit 1
 fi
 
-# Enable and start Docker service for the user
-systemctl --user enable --now docker

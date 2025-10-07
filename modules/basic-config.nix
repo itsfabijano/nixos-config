@@ -38,7 +38,7 @@
         gnumake
         zsh
         htop
-        neofetch
+        fastfetch
         git
         which
         clang
