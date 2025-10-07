@@ -17,8 +17,8 @@ declare -A SYMLINKS=(
 success=1
 
 # Step 1: Clone repositories
-for repo_url in "''${!TARGET_DIRS[@]}"; do
-  target_dir="''${TARGET_DIRS[$repo_url]}"
+for repo_url in "${!TARGET_DIRS[@]}"; do
+  target_dir="${TARGET_DIRS[$repo_url]}"
   repo_name=$(basename "$repo_url" .git)
 
   # Create parent directory for target_dir
@@ -39,8 +39,8 @@ for repo_url in "''${!TARGET_DIRS[@]}"; do
 done
 
 # Step 2: Create symlinks
-for source_path in "''${!SYMLINKS[@]}"; do
-  symlink_target="''${SYMLINKS[$source_path]}"
+for source_path in "${!SYMLINKS[@]}"; do
+  symlink_target="${SYMLINKS[$source_path]}"
   source_name=$(basename "$source_path")
 
   # Check if source_path exists
