@@ -23,6 +23,7 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
+                    ./machines/vm-aarch64-utm.nix
                 ];
             };
         };
