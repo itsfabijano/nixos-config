@@ -50,7 +50,6 @@
     programs.git = {
         enable = true;
         userName = "itsfabijano";
-        userEmail = builtins.getEnv "GIT_USER_EMAIL"; 
     };
 
     programs.tmux = {
