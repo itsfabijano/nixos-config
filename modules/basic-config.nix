@@ -17,7 +17,7 @@
     # Basic networking for VM
     networking.hostName = "nixos";
     networking.useDHCP = true;
-
+    networking.firewall.enable = false; # Disable firewall for simplicity
 
     services.openssh = {
         enable = true;

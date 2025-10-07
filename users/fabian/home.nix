@@ -1,5 +1,8 @@
 { config, pkgs, config-nvim, ... }:
 
+let 
+    variables = builtins.fromJSON (builtins.readFile /home/fabian/repos/personal/nixos-config/.variables.json);
+in
 {
     imports = [
         ./scripts.nix
@@ -49,7 +52,8 @@
 
     programs.git = {
         enable = true;
-        userName = "itsfabijano";
+        userName = variables.git.userName;
+        userEmail = variables.git.userEmail;
     };
 
     programs.tmux = {
