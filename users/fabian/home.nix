@@ -12,7 +12,6 @@
     home.packages = with pkgs; [ 
         git
         nodejs
-        lazygit
         go
         python3
         fzf
@@ -34,6 +33,9 @@
         syntaxHighlighting = {
             enable = true;
         };
+        initExtra = ''
+            bindkey -s ^f "tmux-session\n"
+        '';
     };
 
     programs.neovim = {
@@ -50,5 +52,14 @@
     programs.tmux = {
         enable = true;
         extraConfig = builtins.readFile ./tmux.conf;
+    };
+
+    programs.lazygit = {
+        enable = true;
+        settings = {
+            gui = {
+                tabWidth = 2;
+            };
+        };
     };
 }

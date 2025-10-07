@@ -26,6 +26,7 @@
     security.sudo.wheelNeedsPassword = false;
 
     environment.systemPackages = with pkgs; [
+        gnumake
         zsh
         htop
         neofetch
