@@ -59,20 +59,27 @@ in
         };
     };
 
+    # Make sure to write user manually, since order is not guaranteed
+    # This gets inserted before any other git config
+    xdg.configFile."git/config".text = ''
+    [user]
+      name = ${variables.git.default.userName}
+      email = ${variables.git.default.userEmail}
+    '';
+
     programs.git = {
         enable = true;
-        userName = variables.git.default.userName;
-        userEmail = variables.git.default.userEmail;
         extraConfig = {
             push = { autoSetupRemote = true; };
-            includeIf."gitdir:/home/fabian/repos/personal/" = {
-                path = "/home/fabian/repos/personal/.gitconfig";
+            includeIf."gitdir:~/repos/personal/" = {
+                path = "~/repos/personal/.gitconfig";
             };
-            includeIf."gitdir:/home/fabian/repos/" = {
-                path = "/home/fabian/repos/.gitconfig";
+            includeIf."gitdir:~/repos/" = {
+                path = "~/repos/.gitconfig";
             };
         };
     };
+
 
     home.file."repos/personal/.gitconfig".text = ''
         [user]
