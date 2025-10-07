@@ -23,7 +23,22 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
-                    ./machines/vm-aarch64-utm.nix
+                    ./machines/vm-aarch64-utm-avf.nix
+                ];
+            };
+
+            vm-aarch64-work = nixpkgs.lib.nixosSystem {
+                system = "aarch64-linux"; 
+                modules = [
+                    home-manager.nixosModules.home-manager
+                    ./modules/basic-config.nix
+                    ./users/fabian/nixos.nix
+                    {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.fabian = import ./users/fabian/home.nix;
+                    }
+                    ./machines/vm-aarch64-utm-avf.nix
                 ];
             };
         };

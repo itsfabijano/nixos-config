@@ -3,8 +3,8 @@
 ## Setup Virtual Machine
 1. Create New Virtual Machine > Virtualize > Linux
 2. Select "Use Apple Virtualization"
-3. Set around 70% of host memory, since we'll use it as the main machine
-4. Select 6/8 cores
+3. Set around 50% of host memory, since we'll use it as the main machine
+4. Select 50% of cores
 5. Select 128 GiB harddrive storage
 6. Share mac home directory
 7. Create VM
