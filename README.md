@@ -20,4 +20,10 @@ passwd
 4. `NIXADDR=<IP_ADDR> make vm/bootstrap0`
 5. VM restarts after the command has been executed
 
+```bash
+home-manager switch --flake ./#<username>
+```
+
 ## TODO
+- make home manager switch respect env variables ?? or get rid of env varaibles
+- how should I handle different email from differnt git accounts?

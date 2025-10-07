@@ -35,6 +35,7 @@
         clang
         unzip
         bash
+        home-manager
     ];
 
     users.defaultUserShell = pkgs.zsh;

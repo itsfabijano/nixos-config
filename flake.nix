@@ -27,6 +27,25 @@
                 ];
             };
         };
+
+
+        # Expose home manager configurations
+        homeConfigurations = {
+            "fabian" = home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages.aarch64-linux; # Specify the correct system
+                extraSpecialArgs = { inherit self; }; # Pass self to your home.nix
+                modules = [
+                    ./users/fabian/home.nix
+                    {
+                        # Set the username for standalone Home Manager
+                        home.username = "fabian";
+                        home.homeDirectory = "/home/fabian"; # Also good practice to set
+                        home.enableNixpkgsReleaseCheck = false; # Disable the release check
+                    }
+                ];
+            };
+        };
+
     };
 }
 
