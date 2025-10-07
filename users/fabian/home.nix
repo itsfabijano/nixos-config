@@ -14,6 +14,8 @@ in
 
     home.stateVersion = "24.11";
 
+    xdg.enable = true;
+
     home.packages = with pkgs; [ 
         git
         nodejs
@@ -52,5 +54,10 @@ in
         enable = true;
         userName = "itsfabijano";
         userEmail = builtins.getEnv "GIT_USER_EMAIL"; 
+    };
+
+    programs.tmux = {
+        enable = true;
+        extraConfig = builtins.readFile ./tmux.conf;
     };
 }
