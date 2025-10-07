@@ -47,7 +47,10 @@
         # Expose home manager configurations
         homeConfigurations = {
             "fabian" = home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages.aarch64-linux; # Specify the correct system
+                pkgs = import nixpkgs {
+                    system = "aarch64-linux";
+                    config.allowUnfree = true; 
+                };
                 extraSpecialArgs = { inherit self; }; # Pass self to your home.nix
                 modules = [
                     ./users/fabian/home.nix

@@ -4,6 +4,9 @@
     system.stateVersion = "24.11";
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnsupportedSystem = true;
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 

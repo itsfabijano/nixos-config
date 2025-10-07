@@ -20,7 +20,20 @@ in
         fzf
         zathura
         dotnetCorePackages.dotnet_9.sdk
+        gh
+        htop
+        jq
+        ripgrep
+        tree
+        claude-code
+        codex
+        opencode
     ];
+
+    home.sessionVariables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+    };
 
     programs.zsh = {
         enable = true;
