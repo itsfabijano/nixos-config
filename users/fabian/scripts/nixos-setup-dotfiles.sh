@@ -4,13 +4,13 @@ command -v git >/dev/null 2>&1 || { echo "Error: git is not installed"; exit 1; 
 
 # Define repositories and their target clone directories
 declare -A TARGET_DIRS=(
-  ["git@github-personal:itsfabijano/config.nvim.git"]="$HOME/config.nvim"
-  ["git@github-personal:itsfabijano/nixos-config.git"]="$HOME/nixos-config"
+  ["git@github-personal:itsfabijano/config.nvim.git"]="$HOME/repos/personal/config.nvim"
+  ["git@github-personal:itsfabijano/nixos-config.git"]="$HOME/repos/personal/nixos-config"
 )
 
 # Define symlinks: source path -> symlink target
 declare -A SYMLINKS=(
-  ["$HOME/config.nvim"]="$HOME/.config/nvim"
+  ["$HOME/repos/personal/config.nvim"]="$HOME/.config/nvim"
 )
 
 # Flag to track if all operations were successful
