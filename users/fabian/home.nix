@@ -32,7 +32,6 @@ in
             enable = true;
             theme = "robbyrussell";
             plugins = [
-                "sudo"
                 "vi-mode"
                 "git"
                 "fzf"
@@ -41,7 +40,7 @@ in
         syntaxHighlighting = {
             enable = true;
         };
-        initExtra = ''
+        initContent = ''
             bindkey -s ^f "tmux-session\n"
         '';
     };
@@ -72,6 +71,9 @@ in
         extraConfig = {
             includeIf."gitdir:/home/fabian/repos/personal/" = {
                 path = "/home/fabian/repos/personal/.gitconfig";
+            };
+            includeIf."gitdir:/home/fabian/repos/" = {
+                path = "/home/fabian/repos/.gitconfig";
             };
         };
     };
@@ -118,5 +120,11 @@ in
     done
     # Optional: exit $success to propagate failure, but activation scripts usually continue
     '';
+
+    home.activation.enableUserDocker = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      echo "Enabling Docker user service..."
+      /run/current-system/sw/bin/systemctl --user enable --now docker
+    '';
+
 
 }
