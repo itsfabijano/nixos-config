@@ -25,6 +25,8 @@
         git
         which
         clang
+        unzip
+        bash
     ];
 
     users.defaultUserShell = pkgs.zsh;
