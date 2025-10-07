@@ -1,7 +1,6 @@
 { config, pkgs, config-nvim, lib, ... }:
-
 let 
-    variables = builtins.fromJSON (builtins.readFile /home/fabian/repos/personal/nixos-config/.variables.json);
+    variables = builtins.fromJSON (builtins.readFile /tmp/nixos-config/.variables.json);
 in
 {
     imports = [
