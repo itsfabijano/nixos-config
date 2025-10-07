@@ -100,6 +100,8 @@ vm/secrets:
 	rsync -av -e 'ssh $(SSH_OPTIONS)' \
 		--exclude='archive' \
 		--exclude='known_hosts' \
+		--exclude='config' \
+		--exclude='config.common' \
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
 
 # copy the Nix configurations into the VM.
