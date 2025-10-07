@@ -4,11 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-    imports = [ 
-        (modulesPath + "/profiles/qemu-guest.nix")
-    ];
+    imports = [ ];
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "sr_mod" ];
+    boot.initrd.availableKernelModules = [ "xhci_pci" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ ];
     boot.extraModulePackages = [ ];
@@ -23,6 +21,17 @@
             fsType = "vfat";
         };
 
+    # fileSystems."/" =
+    #   { device = "/dev/disk/by-uuid/e875447b-e01c-4bf3-b187-205ee94f959d";
+    #     fsType = "ext4";
+    #   };
+    #
+    # fileSystems."/boot" =
+    #   { device = "/dev/disk/by-uuid/AAB2-E896";
+    #     fsType = "vfat";
+    #     options = [ "fmask=0022" "dmask=0022" ];
+    #   };
+
     swapDevices = [ ];
 
     # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -34,3 +43,4 @@
 
     nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
+
