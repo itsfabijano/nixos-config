@@ -22,8 +22,8 @@ $(error Environment variable NIXNAME is not defined)
 endif
 
 copy:
-	mkdir -p /tmp/nixos-config
-	cp -f $(MAKEFILE_DIR)/.variables.json /tmp/nixos-config/.variables.json
+	sudo mkdir -p /tmp/nixos-config
+	sudo cp -f $(MAKEFILE_DIR)/.variables.json /tmp/nixos-config/.variables.json
 
 rebuild:
 	$(MAKE) copy
@@ -116,7 +116,7 @@ vm/copy:
 # have to run vm/copy before.
 vm/switch:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
-		mkdir -p /tmp/nixos-config; \
-		cp -f /nix-config/.variables.json /tmp/nixos-config/; \
+		sudo mkdir -p /tmp/nixos-config; \
+		sudo cp -f /nix-config/.variables.json /tmp/nixos-config/; \
 		sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --impure --flake \"/nix-config#${NIXNAME}\" \
 	"
