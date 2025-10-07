@@ -19,8 +19,14 @@
     networking.useDHCP = true;
 
 
-    # Example: Enable SSH and install packages
-    services.openssh.enable = true;
+    services.openssh = {
+        enable = true;
+        settings = {
+            X11Forwarding = true;
+            X11DisplayOffset = 10;
+            X11UseLocalhost = true;
+        };
+    };
     services.openssh.settings.PermitRootLogin = "yes";
 
     security.sudo.wheelNeedsPassword = false;
@@ -36,6 +42,9 @@
         unzip
         bash
         home-manager
+        ripgrep
+        fd
+        xorg.xauth # for x11 forwarding
     ];
 
     users.defaultUserShell = pkgs.zsh;

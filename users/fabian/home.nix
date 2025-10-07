@@ -15,6 +15,7 @@
         go
         python3
         fzf
+        zathura
     ];
 
     programs.zsh = {
