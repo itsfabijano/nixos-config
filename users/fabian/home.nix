@@ -1,4 +1,4 @@
-{ config, pkgs, config-nvim, ... }:
+{ config, pkgs, config-nvim, lib, ... }:
 
 let 
     variables = builtins.fromJSON (builtins.readFile /home/fabian/repos/personal/nixos-config/.variables.json);
@@ -52,9 +52,24 @@ in
 
     programs.git = {
         enable = true;
-        userName = variables.git.userName;
-        userEmail = variables.git.userEmail;
+        userName = variables.git.default.userName;
+        userEmail = variables.git.default.userEmail;
+        extraConfig = {
+            includeIf."gitdir:/home/fabian/repos/personal/" = {
+                path = "/home/fabian/repos/personal/.gitconfig";
+            };
+        };
     };
+
+    home.file."repos/personal/.gitconfig".text = ''
+        [user]
+            name = ${variables.git.personal.userName}
+            email = ${variables.git.personal.userEmail}
+    '';
+
+    home.activation.createPersonalProjectsDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        ${pkgs.coreutils}/bin/mkdir -p /home/fabian/projects/personal
+    '';
 
     programs.tmux = {
         enable = true;

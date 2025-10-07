@@ -1,6 +1,12 @@
 {
   "git": {
-    "userName": "",
-    "userEmail": ""
+    "default": {
+      "userName": "",
+      "userEmail": ""
+    },
+    "personal": {
+      "userName": "",
+      "userEmail": ""
+    }
   }
 }
