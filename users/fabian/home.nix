@@ -1,4 +1,4 @@
-{ config, pkgs, config-nvim, lib, ... }:
+{ config, pkgs, pkgsUnstable, lib, ... }:
 let 
     variables = builtins.fromJSON (builtins.readFile /tmp/nixos-config/.variables.json);
 in
@@ -15,6 +15,7 @@ in
     home.sessionVariables = {
         EDITOR = "nvim";
         VISUAL = "nvim";
+        DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
     };
 
     programs.zsh = {
@@ -38,11 +39,6 @@ in
         initContent = ''
             bindkey -s ^f "tmux-session\n"
         '';
-    };
-
-    programs.neovim = {
-        enable = true;
-        withPython3 = true;
     };
 
     programs.tmux = {

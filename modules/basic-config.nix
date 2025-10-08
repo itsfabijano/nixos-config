@@ -49,6 +49,7 @@
         fd
         xorg.xauth # for x11 forwarding
         gcc
+        docker
     ];
 
     users.defaultUserShell = pkgs.zsh;

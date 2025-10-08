@@ -2,15 +2,21 @@
     description = "Basic NixOS Flake with an imported module";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         home-manager = {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
 
-    outputs = { self, nixpkgs, home-manager }: {
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
+    let
+        system = builtins.currentSystem;
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+    in {
         nixosConfigurations = {
             vm-aarch64 = nixpkgs.lib.nixosSystem {
                 system = "aarch64-linux"; 
@@ -21,6 +27,7 @@
                     {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
+                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
                     ./machines/vm-aarch64-utm-avf.nix
@@ -36,34 +43,13 @@
                     {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
+                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
                     ./machines/vm-aarch64-utm-avf.nix
                 ];
             };
         };
-
-
-        # Expose home manager configurations
-        homeConfigurations = {
-            "fabian" = home-manager.lib.homeManagerConfiguration {
-                pkgs = import nixpkgs {
-                    system = "aarch64-linux";
-                    config.allowUnfree = true; 
-                };
-                extraSpecialArgs = { inherit self; }; # Pass self to your home.nix
-                modules = [
-                    ./users/fabian/home.nix
-                    {
-                        # Set the username for standalone Home Manager
-                        home.username = "fabian";
-                        home.homeDirectory = "/home/fabian"; # Also good practice to set
-                        home.enableNixpkgsReleaseCheck = false; # Disable the release check
-                    }
-                ];
-            };
-        };
-
     };
 }
 

@@ -1,23 +1,30 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgsUnstable, ... }:
 
-{
+let
+    u = pkgsUnstable;
+in {
     home.packages = with pkgs; [ 
         git
-        nodejs_24
         go
         python3
         fzf
         zathura
         dotnetCorePackages.dotnet_9.sdk
         gh
-        htop
+        btop
         jq
         ripgrep
         tree
-        claude-code
         codex
-        opencode
-        httpie
-        bun
+        awscli2
+        wget
+
+        u.bun
+        u.opencode
+        u.neovim
+        u.nodejs_24
+        u.httpie
+        u.claude-code
+        u.typescript
     ];
 }

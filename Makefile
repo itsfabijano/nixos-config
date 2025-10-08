@@ -27,11 +27,8 @@ copy:
 
 switch:
 	$(MAKE) copy
-	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --impure --flake ".#${NIXNAME}"
-
-hm-switch:
-	$(MAKE) copy
-	home-manager switch --flake . --impure
+	sudo nixos-rebuild switch --impure --flake ".#${NIXNAME}"
+	nixos-postinstall
 
 clean:
 	sudo nix-collect-garbage -d
@@ -121,4 +118,5 @@ vm/switch:
 		sudo mkdir -p /tmp/nixos-config; \
 		sudo cp -f /nix-config/.variables.json /tmp/nixos-config/; \
 		sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --impure --flake \"/nix-config#${NIXNAME}\" \
+		nixos-postinstall; \
 	"
