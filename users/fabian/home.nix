@@ -48,7 +48,7 @@ in
         mouse = true;
         baseIndex = 1;
         prefix = "C-a";
-        terminal = "xterm-256color";
+        terminal = "tmux-256color";
         escapeTime = 0;
         shortcut = "a";
         extraConfig = builtins.readFile ./tmux.conf;
