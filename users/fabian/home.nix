@@ -6,6 +6,7 @@ in
     imports = [
         ./scripts.nix
         ./packages.nix
+        ./tmux.nix
     ];
 
     home.stateVersion = "25.05";
@@ -40,18 +41,6 @@ in
         initContent = ''
             bindkey -s ^f "tmux-session\n"
         '';
-    };
-
-    programs.tmux = {
-        enable = true;
-        keyMode = "vi";
-        mouse = true;
-        baseIndex = 1;
-        prefix = "C-a";
-        terminal = "tmux-256color";
-        escapeTime = 0;
-        shortcut = "a";
-        extraConfig = builtins.readFile ./tmux.conf;
     };
 
     programs.lazygit = {

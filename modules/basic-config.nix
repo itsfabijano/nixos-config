@@ -50,6 +50,7 @@
         xorg.xauth # for x11 forwarding
         gcc
         docker
+        nix-prefetch-github
     ];
 
     users.defaultUserShell = pkgs.zsh;
