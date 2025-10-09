@@ -44,6 +44,13 @@ in
 
     programs.tmux = {
         enable = true;
+        keyMode = "vi";
+        mouse = true;
+        baseIndex = 1;
+        prefix = "C-a";
+        terminal = "xterm-256color";
+        escapeTime = 0;
+        shortcut = "a";
         extraConfig = builtins.readFile ./tmux.conf;
     };
 
