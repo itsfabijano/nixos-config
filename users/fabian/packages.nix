@@ -1,9 +1,7 @@
 { config, pkgs, pkgsUnstable, ... }:
 
 let
-    u = pkgsUnstable;
-in {
-    home.packages = with pkgs; [ 
+    stable = with pkgs; [
         git
         go
         python3
@@ -18,13 +16,16 @@ in {
         codex
         awscli2
         wget
-
-        u.bun
-        u.opencode
-        u.neovim
-        u.nodejs_24
-        u.httpie
-        u.claude-code
-        u.typescript
     ];
+    unstable = with pkgsUnstable; [
+        bun
+        opencode
+        neovim
+        nodejs_24
+        httpie
+        claude-code
+        typescript
+    ];
+in {
+    home.packages = stable ++ unstable;
 }
