@@ -23,12 +23,11 @@
                 modules = [
                     home-manager.nixosModules.home-manager
                     ./modules/basic-config.nix
-                    ./modules/headless.nix
                     ./users/fabian/nixos.nix
                     {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
-                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; isHeadless = true; };
+                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
                     ./machines/vm-aarch64-utm-avf.nix
@@ -40,12 +39,11 @@
                 modules = [
                     home-manager.nixosModules.home-manager
                     ./modules/basic-config.nix
-                    ./modules/headless.nix
                     ./users/fabian/nixos.nix
                     {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
-                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; isHeadless = true; };
+                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
                         home-manager.users.fabian = import ./users/fabian/home.nix;
                     }
                     ./machines/vm-aarch64-utm-avf.nix

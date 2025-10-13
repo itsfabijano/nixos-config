@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, lib, isHeadless, ... }:
+{ config, pkgs, pkgsUnstable, lib, ... }:
 let 
     variables = builtins.fromJSON (builtins.readFile /tmp/nixos-config/.variables.json);
 in
@@ -18,9 +18,7 @@ in
         VISUAL = "nvim";
         DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
         NVIM_F_LSP = "1";
-    } // (if isHeadless then {
-        DISPLAY = ":99.0";
-    } else {});
+    };
 
     programs.zsh = {
         enable = true;
