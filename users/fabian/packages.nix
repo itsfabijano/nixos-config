@@ -16,6 +16,7 @@ let
         codex
         awscli2
         wget
+        xclip
     ];
     unstable = with pkgsUnstable; [
         bun

@@ -30,6 +30,8 @@ in
             set -g extended-keys-format csi-u
             set -as terminal-features 'xterm-*:extkeys'
             set -g allow-passthrough on
+            set -g mouse on
+            set -g set-clipboard on
 
             bind r source-file ~/.config/tmux/tmux.conf
 

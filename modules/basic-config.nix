@@ -55,9 +55,6 @@
 
     users.defaultUserShell = pkgs.zsh;
 
-    virtualisation.docker.rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    virtualisation.docker.enable = true;
 
 }
