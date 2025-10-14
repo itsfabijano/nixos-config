@@ -57,4 +57,10 @@
 
     virtualisation.docker.enable = true;
 
+    # Needed to run dynamically linked executables (eg. sst with bun)
+    programs.nix-ld = {
+        enable = true;
+        libraries = with pkgs; [ stdenv.cc.cc zlib openssl curl ];
+    };
+
 }
