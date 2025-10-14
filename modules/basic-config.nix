@@ -51,6 +51,7 @@
         gcc
         docker
         nix-prefetch-github
+        lsof
     ];
 
     users.defaultUserShell = pkgs.zsh;
