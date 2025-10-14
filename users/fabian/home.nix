@@ -40,6 +40,11 @@ in
         };
         initContent = ''
             bindkey -s ^f "tmux-session\n"
+
+            if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ]; then
+              tmux attach || tmux new -s main
+              logout
+            fi
         '';
     };
 
