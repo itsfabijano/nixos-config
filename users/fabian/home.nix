@@ -7,6 +7,7 @@ in
         ./scripts.nix
         ./packages.nix
         ./tmux.nix
+        ./uniscon.nix
     ];
 
     home.stateVersion = "25.05";
