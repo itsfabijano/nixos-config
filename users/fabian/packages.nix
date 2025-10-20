@@ -5,6 +5,7 @@ let
         git
         go
         python3
+        python3Packages.pip
         fzf
         zathura
         dotnetCorePackages.dotnet_9.sdk
