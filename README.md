@@ -28,10 +28,14 @@ passwd
 4. `NIXADDR=<IP_ADDR> make vm/bootstrap`
 
 ## Helpful commands
-### Enable Docker rootless
+### DEV Shell with DIRENV
+1. Create a .envrc file in the project root with the following content:
+```text
+# .envrc
+use flake devshells#dotnet8
 ```
-systemctl --user enable --now docker
-```
+2. Run `direnv allow` to enable the environment
+
 
 
 ## TODO

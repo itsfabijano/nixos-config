@@ -13,10 +13,14 @@
 
     outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
     let
-        system = builtins.currentSystem;
+        system = "aarch64-linux";
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
         pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
     in {
+        devShells.${system} = {
+            dotnet8 = pkgs.mkShell { packages = [ pkgs.dotnet-sdk_8 ]; };
+        };
+
         nixosConfigurations = {
             vm-aarch64 = nixpkgs.lib.nixosSystem {
                 system = "aarch64-linux"; 

@@ -10,6 +10,8 @@ in
         ./uniscon.nix
     ];
 
+    nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
+
     home.stateVersion = "25.05";
 
     xdg.enable = true;
@@ -93,6 +95,7 @@ in
     programs.direnv = {
         enable = true;
         enableZshIntegration = true; 
+        nix-direnv.enable = true;
     };
 
 }
