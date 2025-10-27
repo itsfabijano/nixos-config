@@ -15,43 +15,21 @@
     let
         system = "aarch64-linux";
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-        pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+        mkSystem = import ./lib/mk-system.nix {
+            inherit nixpkgs; inherit nixpkgs-unstable; inherit home-manager;
+        };
     in {
         devShells.${system} = {
             dotnet8 = pkgs.mkShell { packages = [ pkgs.dotnet-sdk_8 ]; };
         };
 
-        nixosConfigurations = {
-            vm-aarch64 = nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux"; 
-                modules = [
-                    home-manager.nixosModules.home-manager
-                    ./modules/basic-config.nix
-                    ./users/fabian/nixos.nix
-                    {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
-                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
-                        home-manager.users.fabian = import ./users/fabian/home.nix;
-                    }
-                    ./machines/vm-aarch64-utm-avf.nix
-                ];
+        nixosConfigurations = { 
+            vm-aarch64 = mkSystem "vm-aarch64" {
+                system = "aarch64-linux";
             };
 
-            vm-aarch64-work = nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux"; 
-                modules = [
-                    home-manager.nixosModules.home-manager
-                    ./modules/basic-config.nix
-                    ./users/fabian/nixos.nix
-                    {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
-                        home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
-                        home-manager.users.fabian = import ./users/fabian/home.nix;
-                    }
-                    ./machines/vm-aarch64-utm-avf.nix
-                ];
+            vm-aarch64-work = mkSystem "vm-aarch64-work" {
+                system = "aarch64-linux";
             };
         };
     };

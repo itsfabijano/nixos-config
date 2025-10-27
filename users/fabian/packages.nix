@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 let
     stable = with pkgs; [
@@ -19,7 +19,7 @@ let
         wget
         xclip
     ];
-    unstable = with pkgsUnstable; [
+    unstable = with pkgs-unstable; [
         bun
         opencode
         neovim

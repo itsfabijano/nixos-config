@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 let 
     variables = builtins.fromJSON (builtins.readFile /tmp/nixos-config/.variables.json);
 in
