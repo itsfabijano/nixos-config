@@ -20,7 +20,15 @@
         };
     in {
         devShells.${system} = {
-            dotnet8 = pkgs.mkShell { packages = [ pkgs.dotnet-sdk_8 ]; };
+            dotnet8 = pkgs.mkShell { 
+                packages = [ pkgs.dotnet-sdk_8 ];
+                shellHook = ''
+                    export PATH="$PATH:/home/fabian/.dotnet/tools"
+                    if ! command -v csharp-ls >/dev/null 2>&1; then
+                        dotnet tool install -g csharp-ls --version 0.16.0
+                    fi
+                '';
+            };
         };
 
         nixosConfigurations = { 
