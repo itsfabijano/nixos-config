@@ -18,6 +18,7 @@ let
         awscli2
         wget
         xclip
+        trivy
     ];
     unstable = with pkgs-unstable; [
         bun
