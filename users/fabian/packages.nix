@@ -19,6 +19,7 @@ let
         wget
         xclip
         trivy
+        kubeseal
     ];
     unstable = with pkgs-unstable; [
         bun
