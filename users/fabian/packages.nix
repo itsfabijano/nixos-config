@@ -29,8 +29,8 @@ let
         claude-code
         typescript
     ];
-    custom = [
-        pkgs-custom.opencode
+    custom = with pkgs-custom; [
+        opencode
     ];
 in {
     home.packages = stable ++ unstable ++ custom;
