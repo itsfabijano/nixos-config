@@ -36,7 +36,28 @@ use flake devshells#dotnet8
 ```
 2. Run `direnv allow` to enable the environment
 
+### Updating OpenCode
+OpenCode is pinned to a specific release version in `flake.nix`. To update to a newer version:
 
+1. **Update to the latest release:**
+   ```bash
+   nix flake update opencode
+   ```
+
+2. **Pin to a specific version:**
+   Edit `flake.nix` and change the opencode input URL:
+   ```nix
+   opencode.url = "github:anomalyco/opencode/vX.X.X";
+   ```
+   Then run `nix flake lock` to update the lock file.
+
+3. **View available versions:**
+   Check the [OpenCode releases page](https://github.com/anomalyco/opencode/releases)
+
+4. **Rebuild your system:**
+   ```bash
+   sudo nixos-rebuild switch --flake /home/fabian/repos/personal/nixos-config
+   ```
 
 ## TODO
 - how should I handle different email from differnt git accounts?
