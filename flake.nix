@@ -8,15 +8,16 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        opencode.url = "github:anomalyco/opencode/dev";
     };
 
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, opencode }:
     let
         system = "aarch64-linux";
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
         mkSystem = import ./lib/mk-system.nix {
-            inherit nixpkgs; inherit nixpkgs-unstable; inherit home-manager;
+            inherit nixpkgs; inherit nixpkgs-unstable; inherit home-manager; inherit opencode;
         };
     in {
         devShells.${system} = {

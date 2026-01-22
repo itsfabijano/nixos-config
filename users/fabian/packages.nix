@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, pkgs-opencode, ... }:
 
 let
     stable = with pkgs; [
@@ -23,13 +23,15 @@ let
     ];
     unstable = with pkgs-unstable; [
         bun
-        opencode
         neovim
         nodejs_24
         httpie
         claude-code
         typescript
     ];
+    opencode-pkgs = with pkgs-opencode; [
+        default
+    ];
 in {
-    home.packages = stable ++ unstable;
+    home.packages = stable ++ unstable ++ opencode-pkgs;
 }
