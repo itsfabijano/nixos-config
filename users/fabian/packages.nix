@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, pkgs-opencode, ... }:
+{ config, pkgs, pkgs-unstable, pkgs-custom, ... }:
 
 let
     stable = with pkgs; [
@@ -29,9 +29,9 @@ let
         claude-code
         typescript
     ];
-    opencode-pkgs = with pkgs-opencode; [
-        default
+    custom = [
+        pkgs-custom.opencode
     ];
 in {
-    home.packages = stable ++ unstable ++ opencode-pkgs;
+    home.packages = stable ++ unstable ++ custom;
 }

@@ -7,7 +7,9 @@ let
     systemFunc = nixpkgs.lib.nixosSystem;
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
     pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-    pkgs-opencode = opencode.packages.${system};
+    pkgs-custom = {
+        opencode = opencode.packages.${system}.default;
+    };
 in systemFunc {
     inherit system;
     modules = [
@@ -17,7 +19,7 @@ in systemFunc {
         {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-opencode; };
+            home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-custom; };
             home-manager.users.fabian = import ../users/fabian/home.nix;
         }
         ../machines/vm-aarch64-utm-avf.nix
