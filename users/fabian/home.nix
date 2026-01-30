@@ -90,7 +90,7 @@ in
             sshCommand = ssh -i ~/.ssh/id_rsa_github_personal -F /dev/null
     '';
 
-    xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/config.nvim";
+    xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/dotfiles/home/.config/nvim";
 
     programs.direnv = {
         enable = true;
