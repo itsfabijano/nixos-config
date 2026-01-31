@@ -4,7 +4,7 @@ command -v git >/dev/null 2>&1 || { echo "Error: git is not installed"; exit 1; 
 
 # Define repositories and their target clone directories
 declare -A TARGET_DIRS=(
-  ["git@github.com:itsfabijano/config.nvim.git"]="$HOME/repos/personal/config.nvim"
+  ["git@github.com:itsfabijano/dotfiles.git"]="$HOME/repos/personal/dotfiles"
   ["git@github.com:itsfabijano/nixos-config.git"]="$HOME/repos/personal/nixos-config"
 )
 

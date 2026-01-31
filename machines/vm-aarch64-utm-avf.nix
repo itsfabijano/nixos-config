@@ -29,5 +29,10 @@
             # "x-systemd.idle-timeout=300"  # optional: unmount after 5 min idle
         ];
     };
+
+    fileSystems."/home/fabian/repos" = {
+	    device = "/mnt/utm/repos";
+	    options = [ "bind" ];
+    };
 }
 

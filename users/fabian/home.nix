@@ -9,7 +9,7 @@ in
         ./tmux.nix
     ];
 
-    nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
+    # nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
 
     home.stateVersion = "25.05";
 
@@ -81,7 +81,6 @@ in
     };
 
 
-    home.file."repos".source = config.lib.file.mkOutOfStoreSymlink "/mnt/utm/repos";
     home.file."repos/personal/.gitconfig".text = ''
         [user]
             name = ${variables.git.personal.userName}
