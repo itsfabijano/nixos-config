@@ -7,7 +7,6 @@ in
         ./scripts.nix
         ./packages.nix
         ./tmux.nix
-        ./uniscon.nix
     ];
 
     nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
@@ -82,6 +81,7 @@ in
     };
 
 
+    home.file."repos".source = config.lib.file.mkOutOfStoreSymlink "/mnt/utm/repos";
     home.file."repos/personal/.gitconfig".text = ''
         [user]
             name = ${variables.git.personal.userName}
@@ -91,6 +91,7 @@ in
     '';
 
     xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/dotfiles/home/.config/nvim";
+
 
     programs.direnv = {
         enable = true;
