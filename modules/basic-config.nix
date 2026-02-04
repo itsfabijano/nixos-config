@@ -52,6 +52,7 @@
         docker
         nix-prefetch-github
         lsof
+        fio
     ];
 
     users.defaultUserShell = pkgs.zsh;

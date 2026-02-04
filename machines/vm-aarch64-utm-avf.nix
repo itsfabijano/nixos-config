@@ -26,13 +26,10 @@
             "_netdev"
             "noauto"
             "x-systemd.automount"  # optional: mount on first access
+            "x-systemd.mount-timeout=1s"
+            "x-systemd.device-timeout=1s"
             # "x-systemd.idle-timeout=300"  # optional: unmount after 5 min idle
         ];
-    };
-
-    fileSystems."/home/fabian/repos" = {
-	    device = "/mnt/utm/repos";
-	    options = [ "bind" ];
     };
 }
 

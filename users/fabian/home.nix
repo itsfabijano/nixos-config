@@ -7,6 +7,7 @@ in
         ./scripts.nix
         ./packages.nix
         ./tmux.nix
+        ./unison.nix
     ];
 
     # nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
