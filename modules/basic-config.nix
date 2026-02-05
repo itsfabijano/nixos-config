@@ -53,6 +53,7 @@
         nix-prefetch-github
         lsof
         fio
+        openssl
     ];
 
     users.defaultUserShell = pkgs.zsh;
