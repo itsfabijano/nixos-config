@@ -22,17 +22,18 @@ in
         mouse = true;
         baseIndex = 1;
         prefix = "C-a";
-        terminal = "tmux-256color";
         escapeTime = 0;
+        terminal = "tmux-256color";
         shortcut = "a";
         package = tmuxGit;
         extraConfig = ''
+            set -ga terminal-overrides ",xterm-*:RGB"
             set -s extended-keys on
             set -g extended-keys-format csi-u
             set -as terminal-features 'xterm-*:extkeys'
             set -g allow-passthrough on
-            set -g mouse on
             set -g set-clipboard on
+            set -g focus-events on
 
             bind r source-file ~/.config/tmux/tmux.conf
 
