@@ -8,7 +8,8 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        opencode.url = "github:anomalyco/opencode/v1.1.53";
+        opencode.url = "github:anomalyco/opencode";
+        # opencode.url = "git+https://github.com/anomalyco/opencode?rev=579902ace6e9fb925f50b7d9fdf11a6b47895307";
     };
 
 
