@@ -91,6 +91,7 @@ in
     '';
 
     xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/dotfiles/home/.config/nvim";
+    home.file.".local/share/nvim/nix-runtime".source = "${pkgs.neovim}/share/nvim/runtime";
 
 
     programs.direnv = {
