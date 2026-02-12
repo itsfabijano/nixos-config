@@ -23,6 +23,7 @@ let
     ];
     unstable = with pkgs-unstable; [
         bun
+        pnpm
         neovim
         nodejs_24
         httpie
