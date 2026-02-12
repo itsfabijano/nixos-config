@@ -47,6 +47,10 @@ in
             set -g status-right ""
             set -g status-right-length 10
 
+            # vim-like visual mode
+            bind -T copy-mode-vi v send-keys -X begin-selection
+            bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel
+
             # vim-like pane switching
             bind -r ^ last-window
             bind -r k select-pane -U
@@ -64,9 +68,6 @@ in
             # copy functionality
             bind C-u copy-mode \; send -X search-backward "(https?://|git@|git://|ssh://|ftp://|file:///)[[:alnum:]?=%/_.:,;~@!#$&()*+-]*"
 
-            # vim-like visual mode
-            bind-key -T copy-mode-vi v send-keys -X begin-selection
-            bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
         '';
     };
 }
