@@ -29,6 +29,7 @@ let
         httpie
         claude-code
         typescript
+        rustup
     ];
     custom = with pkgs-custom; [
         opencode
