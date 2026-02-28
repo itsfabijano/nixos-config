@@ -14,7 +14,6 @@ let
         jq
         ripgrep
         tree
-        codex
         awscli2
         wget
         xclip
@@ -27,7 +26,6 @@ let
         neovim
         nodejs_24
         httpie
-        claude-code
         typescript
         rustup
     ];
