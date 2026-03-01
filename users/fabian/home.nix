@@ -92,6 +92,9 @@ in
     '';
 
     xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/dotfiles/home/.config/nvim";
+    xdg.configFile.opencode.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/personal/dotfiles/home/.config/opencode";
+
+    # Make sure lua finds the neovim libraries for autocomplete
     home.file.".local/share/nvim/nix-runtime".source = "${pkgs.neovim}/share/nvim/runtime";
 
 
