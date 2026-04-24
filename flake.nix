@@ -19,6 +19,7 @@
     let
         system = "aarch64-linux";
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
         mkSystem = import ./lib/mk-system.nix {
             inherit nixpkgs; inherit nixpkgs-unstable; inherit home-manager; inherit opencode;
         };
@@ -28,10 +29,18 @@
         nixosConfigurations = { 
             vm-aarch64 = mkSystem "vm-aarch64" {
                 system = "aarch64-linux";
+                extraHomePackages =
+                    (with pkgs; [ ])
+                    ++ 
+                    (with pkgs-unstable; [ ]);
             };
 
             vm-aarch64-work = mkSystem "vm-aarch64-work" {
                 system = "aarch64-linux";
+                extraHomePackages =
+                    (with pkgs; [ ])
+                    ++
+                    (with pkgs-unstable; [ ]);
             };
         };
     };

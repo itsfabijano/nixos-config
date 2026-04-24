@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, pkgs-custom, ... }:
+{ config, pkgs, pkgs-unstable, pkgs-custom, extraHomePackages ? [ ], ... }:
 
 let
     stable = with pkgs; [
@@ -33,5 +33,5 @@ let
         opencode
     ];
 in {
-    home.packages = stable ++ unstable ++ custom;
+    home.packages = stable ++ unstable ++ custom ++ extraHomePackages;
 }

@@ -1,6 +1,6 @@
 { nixpkgs, nixpkgs-unstable, home-manager, opencode }:
 name:
-{ system }:
+{ system, extraHomePackages ? [ ] }:
 
 let
     machineConfig = ../machines/${name}.nix;
@@ -19,7 +19,7 @@ in systemFunc {
         {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-custom; };
+            home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-custom extraHomePackages; };
             home-manager.users.fabian = import ../users/fabian/home.nix;
         }
         ../machines/vm-aarch64-utm-avf.nix
