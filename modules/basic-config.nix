@@ -1,6 +1,37 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
+let
+    runtimeLibs = with pkgs; [
+        stdenv.cc.cc.lib
+        libgbm
+        systemd
+        zlib
+        openssl
+        curl
+        glib
+        nspr
+        nss
+        dbus
+        expat
+        cups
+        alsa-lib
+        atk
+        at-spi2-atk
+        at-spi2-core
+        cairo
+        pango
+        gtk3
+        xorg.libX11
+        xorg.libXcomposite
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXrandr
+        xorg.libxcb
+        libxkbcommon
+        mesa
+    ];
+in {
     system.stateVersion = "24.11";
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -63,7 +94,13 @@
     # Needed to run dynamically linked executables (eg. sst with bun)
     programs.nix-ld = {
         enable = true;
-        libraries = with pkgs; [ stdenv.cc.cc zlib openssl curl ];
+        # needed to run sharp with bun
+        libraries = runtimeLibs;
+    };
+
+    environment.sessionVariables = {
+        # needed to run sharp with bun
+        LD_LIBRARY_PATH = lib.makeLibraryPath runtimeLibs;
     };
 
 }
