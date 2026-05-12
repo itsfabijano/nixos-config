@@ -28,6 +28,7 @@ let
         httpie
         typescript
         rustup
+        luaPackages.tree-sitter-cli
     ];
     custom = with pkgs-custom; [
         opencode
