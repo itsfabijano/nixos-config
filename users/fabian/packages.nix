@@ -8,7 +8,7 @@ let
         python3Packages.pip
         fzf
         zathura
-        dotnetCorePackages.dotnet_9.sdk
+        dotnetCorePackages.dotnet_10.sdk
         gh
         btop
         jq

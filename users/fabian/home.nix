@@ -10,7 +10,10 @@ in
         ./unison.nix
     ];
 
-    # nix.registry.devshells.flake = builtins.getFlake "path:${config.home.homeDirectory}/repos/personal/nixos-config";
+    nix.registry.devshells.to = {
+        type = "path";
+        path = "${config.home.homeDirectory}/repos/personal/nixos-config";
+    };
 
     home.stateVersion = "25.05";
 
