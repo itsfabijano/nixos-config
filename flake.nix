@@ -10,16 +10,17 @@
         };
         opencode = {
             # url = "github:anomalyco/opencode/65cde7f494e3069f9ee625c357dc17bb899d8961"; # 1.4.0
-            url = "github:anomalyco/opencode";
+            url = "github:anomalyco/opencode/v1.15.3";
             # inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+        templ.url = "github:a-h/templ";
     };
 
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, opencode }:
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, opencode, templ }:
     let
         system = "aarch64-linux";
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; overlays = [templ.overlays.default]; };
         pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
         mkSystem = import ./lib/mk-system.nix {
             inherit nixpkgs; inherit nixpkgs-unstable; inherit home-manager; inherit opencode;

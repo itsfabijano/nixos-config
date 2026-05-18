@@ -19,6 +19,7 @@ let
         xclip
         trivy
         kubeseal
+        templ
     ];
     unstable = with pkgs-unstable; [
         bun
