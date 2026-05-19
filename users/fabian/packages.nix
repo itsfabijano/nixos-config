@@ -19,7 +19,6 @@ let
         xclip
         trivy
         kubeseal
-        templ
     ];
     unstable = with pkgs-unstable; [
         bun
@@ -30,6 +29,8 @@ let
         typescript
         rustup
         luaPackages.tree-sitter-cli
+        air
+        templ
     ];
     custom = with pkgs-custom; [
         opencode
