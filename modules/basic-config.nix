@@ -86,7 +86,6 @@ in {
         fio
         openssl
         icu
-        xsel
     ];
 
     users.defaultUserShell = pkgs.zsh;
