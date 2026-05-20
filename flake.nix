@@ -9,9 +9,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         opencode = {
-            # url = "github:anomalyco/opencode/65cde7f494e3069f9ee625c357dc17bb899d8961"; # 1.4.0
             url = "github:anomalyco/opencode/v1.15.3";
-            # inputs.nixpkgs.follows = "nixpkgs-unstable";
+            # url = "github:anomalyco/opencode";
         };
         templ.url = "github:a-h/templ";
     };
