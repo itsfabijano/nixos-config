@@ -1,14 +1,15 @@
-{ nixpkgs, nixpkgs-unstable, home-manager, opencode }:
+{ nixpkgs, nixpkgs-unstable, home-manager, overlays }:
 name:
-{ system, extraHomePackages ? [ ] }:
+{ system }:
 
 let
     machineConfig = ../machines/${name}.nix;
     systemFunc = nixpkgs.lib.nixosSystem;
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-    pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-    pkgs-custom = {
-        opencode = opencode.packages.${system}.default;
+    pkgs-unstable = import nixpkgs-unstable { 
+        inherit system;
+        config.allowUnfree = true;
+        inherit overlays;
     };
 in systemFunc {
     inherit system;
@@ -19,7 +20,7 @@ in systemFunc {
         {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-custom extraHomePackages; };
+            home-manager.extraSpecialArgs = { inherit pkgs-unstable; extraHomePackages = []; };
             home-manager.users.fabian = import ../users/fabian/home.nix;
         }
         ../machines/vm-aarch64-utm-avf.nix

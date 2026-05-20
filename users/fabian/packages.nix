@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, pkgs-custom, extraHomePackages ? [ ], ... }:
+{ config, pkgs, pkgs-unstable, extraHomePackages ? [ ], ... }:
 
 let
     stable = with pkgs; [
@@ -31,10 +31,8 @@ let
         luaPackages.tree-sitter-cli
         air
         templ
-    ];
-    custom = with pkgs-custom; [
         opencode
     ];
 in {
-    home.packages = stable ++ unstable ++ custom ++ extraHomePackages;
+    home.packages = stable ++ unstable ++ extraHomePackages;
 }
