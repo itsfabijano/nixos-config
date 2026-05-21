@@ -1,6 +1,12 @@
-{ config, pkgs, pkgs-unstable, pkgs-custom, lib, ... }:
+{ config, pkgs, pkgs-unstable, pkgs-custom, lib, envVars, ... }:
 let 
     variables = builtins.fromJSON (builtins.readFile /tmp/nixos-config/.variables.json);
+    sessionVariables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+        DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
+        NVIM_F_LSP = "1";
+    };
 in
 {
     imports = [
@@ -20,12 +26,7 @@ in
 
     xdg.enable = true;
 
-    home.sessionVariables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-        DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
-        NVIM_F_LSP = "1";
-    };
+    home.sessionVariables = sessionVariables // envVars;
 
     programs.zsh = {
         enable = true;

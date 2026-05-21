@@ -1,6 +1,6 @@
 { nixpkgs, nixpkgs-unstable, home-manager, overlays }:
 name:
-{ system }:
+{ system, envVars ? { } }:
 
 let
     machineConfig = ../machines/${name}.nix;
@@ -20,7 +20,7 @@ in systemFunc {
         {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit pkgs-unstable; extraHomePackages = []; };
+            home-manager.extraSpecialArgs = { inherit pkgs-unstable envVars; extraHomePackages = []; };
             home-manager.users.fabian = import ../users/fabian/home.nix;
         }
         ../machines/vm-aarch64-utm-avf.nix
