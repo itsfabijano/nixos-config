@@ -31,7 +31,6 @@ let
         luaPackages.tree-sitter-cli
         air
         templ
-        opencode
     ];
 in {
     home.packages = stable ++ unstable ++ extraHomePackages;

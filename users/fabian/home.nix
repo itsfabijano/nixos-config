@@ -8,6 +8,7 @@ in
         ./packages.nix
         ./tmux.nix
         ./unison.nix
+        ./opencode.nix
     ];
 
     nix.registry.devshells.to = {
