@@ -44,7 +44,7 @@
             vm-aarch64-work = mkSystem "vm-aarch64-work" {
                 system = "aarch64-linux";
                 envVars = {
-                    OPENCODE_CONFIG_DIR = "$HOME/repos/sii/opencode-config";
+                    OPENCODE_CONFIG_DIR = "/home/fabian/repos/sii/opencode-config";
                 };
             };
         };

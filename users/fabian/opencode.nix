@@ -1,7 +1,8 @@
-{ pkgs-unstable, ... }:
+{ pkgs-unstable, envVars, ... }:
 
 let
     opencode = pkgs-unstable.opencode;
+    opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
 in {
     home.packages = [ 
         opencode
@@ -19,6 +20,7 @@ in {
         };
 
         Service = {
+            Environment = [ "OPENCODE_CONFIG_DIR=${opencodeConfigDir}" ];
             ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
             Restart = "on-failure";
             RestartSec = 5;
@@ -27,4 +29,3 @@ in {
         Install.WantedBy = [ "default.target" ];
     };
 }
-
