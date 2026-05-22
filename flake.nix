@@ -11,6 +11,7 @@
         opencode = {
             url = "github:anomalyco/opencode/v1.15.3";
             # url = "github:anomalyco/opencode";
+            # url = "github:anomalyco/opencode/e4957a78eae1bd218b7d2ddc8d4ad0a1866ab674";
         };
         templ.url = "github:a-h/templ";
     };
@@ -43,7 +44,7 @@
             vm-aarch64-work = mkSystem "vm-aarch64-work" {
                 system = "aarch64-linux";
                 envVars = {
-                    OPENCODE_CONFIG_DIR = "~/repos/sii/opencode-config";
+                    OPENCODE_CONFIG_DIR = "$HOME/repos/sii/opencode-config";
                 };
             };
         };
