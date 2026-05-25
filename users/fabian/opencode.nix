@@ -1,8 +1,13 @@
-{ pkgs-unstable, envVars, ... }:
+{ pkgs-unstable, envVars, lib, ... }:
 
 let
     opencode = pkgs-unstable.opencode;
     opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
+    servicePath = lib.makeBinPath [
+        pkgs-unstable.bun
+        pkgs-unstable.nodejs
+        pkgs-unstable.go
+    ];
 in {
     home.packages = [ 
         opencode
@@ -20,7 +25,10 @@ in {
         };
 
         Service = {
-            Environment = [ "OPENCODE_CONFIG_DIR=${opencodeConfigDir}" ];
+            Environment = [
+                "OPENCODE_CONFIG_DIR=${opencodeConfigDir}"
+                "PATH=${servicePath}"
+            ];
             ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
             Restart = "on-failure";
             RestartSec = 5;
