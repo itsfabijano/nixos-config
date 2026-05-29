@@ -20,6 +20,7 @@ let
         trivy
         kubeseal
         cloc
+        k6
     ];
     unstable = with pkgs-unstable; [
         bun
