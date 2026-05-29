@@ -99,9 +99,9 @@ in {
         libraries = runtimeLibs;
     };
 
-    environment.sessionVariables = {
+    # environment.sessionVariables = {
         # needed to run sharp with bun
-        LD_LIBRARY_PATH = lib.makeLibraryPath runtimeLibs;
-    };
+        # LD_LIBRARY_PATH = lib.makeLibraryPath runtimeLibs;
+    # };
 
 }

@@ -28,6 +28,7 @@ in {
             Environment = [
                 "OPENCODE_CONFIG_DIR=${opencodeConfigDir}"
                 "PATH=${servicePath}"
+                "OPENCODE_EXPERIMENTAL_PLAN_MODE=1"
             ];
             ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
             Restart = "on-failure";
