@@ -2,12 +2,12 @@
 
 let
     opencode = pkgs-unstable.opencode;
-    opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
-    servicePath = lib.makeBinPath [
-        pkgs-unstable.bun
-        pkgs-unstable.nodejs
-        pkgs-unstable.go
-    ];
+    # opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
+    # servicePath = lib.makeBinPath [
+    #     pkgs-unstable.bun
+    #     pkgs-unstable.nodejs
+    #     pkgs-unstable.go
+    # ];
 in {
     home.packages = [ 
         opencode
@@ -18,23 +18,23 @@ in {
         '')
     ];
 
-    systemd.user.services.opencode-server = {
-        Unit = {
-            Description = "Opencode Server";
-            After = [ "network.target" ];
-        };
-
-        Service = {
-            Environment = [
-                "OPENCODE_CONFIG_DIR=${opencodeConfigDir}"
-                "PATH=${servicePath}"
-                "OPENCODE_EXPERIMENTAL_PLAN_MODE=1"
-            ];
-            ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
-            Restart = "on-failure";
-            RestartSec = 5;
-        };
-
-        Install.WantedBy = [ "default.target" ];
-    };
+    # systemd.user.services.opencode-server = {
+    #     Unit = {
+    #         Description = "Opencode Server";
+    #         After = [ "network.target" ];
+    #     };
+    #
+    #     Service = {
+    #         Environment = [
+    #             "OPENCODE_CONFIG_DIR=${opencodeConfigDir}"
+    #             "PATH=${servicePath}"
+    #             "OPENCODE_EXPERIMENTAL_PLAN_MODE=1"
+    #         ];
+    #         ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
+    #         Restart = "on-failure";
+    #         RestartSec = 5;
+    #     };
+    #
+    #     Install.WantedBy = [ "default.target" ];
+    # };
 }
