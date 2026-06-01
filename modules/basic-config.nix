@@ -21,13 +21,13 @@ let
         cairo
         pango
         gtk3
-        xorg.libX11
-        xorg.libXcomposite
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXrandr
-        xorg.libxcb
+        libx11
+        libxcomposite
+        libxdamage
+        libxext
+        libxfixes
+        libxrandr
+        libxcb
         libxkbcommon
         mesa
     ];
@@ -78,7 +78,7 @@ in {
         home-manager
         ripgrep
         fd
-        xorg.xauth # for x11 forwarding
+        xauth # for x11 forwarding
         gcc
         docker
         nix-prefetch-github

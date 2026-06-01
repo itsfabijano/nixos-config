@@ -30,6 +30,7 @@ in
 
     programs.zsh = {
         enable = true;
+        dotDir = config.home.homeDirectory;
         autosuggestion.enable = true;
         shellAliases = {
             vim = "nvim";
@@ -76,7 +77,7 @@ in
 
     programs.git = {
         enable = true;
-        extraConfig = {
+        settings = {
             push = { autoSetupRemote = true; };
             includeIf."gitdir:~/repos/personal/" = {
                 path = "~/repos/personal/.gitconfig";
