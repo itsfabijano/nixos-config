@@ -9,6 +9,7 @@ let
         pkgs-unstable.bun
         pkgs-unstable.nodejs
         pkgs-unstable.go
+        pkgs-unstable.stdenv.cc
     ];
 in {
     home.packages = [ 
