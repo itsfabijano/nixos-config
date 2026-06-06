@@ -3,7 +3,6 @@
 let
     stable = with pkgs; [
         git
-        go
         python3
         python3Packages.pip
         fzf
@@ -31,6 +30,7 @@ let
         typescript
         rustup
         luaPackages.tree-sitter-cli
+        go
         air
         templ
     ];

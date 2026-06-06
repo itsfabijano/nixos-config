@@ -2,7 +2,7 @@
 { }:
 
 let
-    version = "1.16.0";
+    version = "1.16.2";
     assets = {
       "x86_64-linux" = {
         name = "opencode-linux-x64.tar.gz";
@@ -11,7 +11,7 @@ let
 
       "aarch64-linux" = {
         name = "opencode-linux-arm64.tar.gz";
-        hash = "sha256-Bu9gK5vIpiT9yOknZz59qky3Dx5XxVhAI8qTYxxKR24=";
+        hash = "sha256-6x1YdscGdc/ak8ShxDhdcnQS+ucxVPHwBdFVYm31tVk=";
       };
     };
 
@@ -26,8 +26,9 @@ pkgs.stdenvNoCC.mkDerivation {
     sourceRoot = ".";
 
     src = pkgs.fetchurl {
-    url = "https://github.com/anomalyco/opencode/releases/download/v${version}/${asset.name}";
-    hash = asset.hash;
+        name = "opencode-${version}-${asset.name}";
+        url = "https://github.com/anomalyco/opencode/releases/download/v${version}/${asset.name}";
+        hash = asset.hash;
     };
 
     installPhase = ''

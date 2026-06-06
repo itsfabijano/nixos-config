@@ -1,16 +1,10 @@
 { pkgs, pkgs-unstable, envVars, lib, ... }:
 
 let
-    mkOpencode = import ./mk-opencode.nix { inherit pkgs lib; };
+    mkOpencode = import ./mk-opencode.nix { inherit lib; pkgs = pkgs-unstable; };
     opencode = mkOpencode { };
     # opencode = pkgs-unstable.opencode;
     opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
-    servicePath = lib.makeBinPath [
-        pkgs-unstable.bun
-        pkgs-unstable.nodejs
-        pkgs-unstable.go
-        pkgs-unstable.stdenv.cc
-    ];
 in {
     home.packages = [ 
         opencode
@@ -28,10 +22,11 @@ in {
         };
 
         Service = {
+            WorkingDirectory = "%h";
             Environment = [
                 "OPENCODE_CONFIG_DIR=${opencodeConfigDir}"
-                "PATH=${servicePath}"
-                "OPENCODE_EXPERIMENTAL_PLAN_MODE=1"
+                "PATH=%h/.nix-profile/bin:/etc/profiles/per-user/%u/bin:/run/current-system/sw/bin"
+                "HOME=%h"
             ];
             ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
             Restart = "on-failure";
