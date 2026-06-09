@@ -24,6 +24,7 @@
                     -prefer newer \
                     -batch \
                     -times \
+                    -ignore "Name .git" \
                     -ignore "Name node_modules" \
                     -ignore "Name target" \
                     -ignore "Name .direnv" \
