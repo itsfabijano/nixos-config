@@ -8,6 +8,7 @@ let
         fzf
         zathura
         dotnetCorePackages.dotnet_10.sdk
+        csharp-ls
         gh
         btop
         jq
