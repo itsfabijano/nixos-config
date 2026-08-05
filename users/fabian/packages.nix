@@ -26,7 +26,7 @@ let
         bun
         pnpm
         neovim
-        nodejs_24
+        nodejs_26
         httpie
         typescript
         rustup

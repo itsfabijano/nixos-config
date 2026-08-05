@@ -2,7 +2,7 @@
 { }:
 
 let
-    version = "1.17.11";
+    version = "1.18.13";
     assets = {
       "x86_64-linux" = {
         name = "opencode-linux-x64.tar.gz";
@@ -11,7 +11,7 @@ let
 
       "aarch64-linux" = {
         name = "opencode-linux-arm64.tar.gz";
-        hash = "sha256-bAroISQBx4+dzd6tNdOFlTx6ROsWFjCTZbWFA9vRtM0=";
+        hash = "sha256-3UrIwhZ6gzjK8pawAslVFB1SounJXuCpX0rpk5wpOrA=";
       };
     };
 
