@@ -8,22 +8,18 @@
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        # opencode = {
-        #     url = "github:anomalyco/opencode/v1.15.3";
-        #     # url = "github:anomalyco/opencode";
-        #     # url = "github:anomalyco/opencode/e4957a78eae1bd218b7d2ddc8d4ad0a1866ab674";
-        # };
+        opencode.url = "github:anomalyco/opencode";
         templ.url = "github:a-h/templ";
     };
 
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, templ }:
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, opencode, templ }:
     let
         system = "aarch64-linux";
 
         overlays = [
             templ.overlays.default
-            # opencode.overlays.default
+            opencode.overlays.default
         ];
 
         mkSystem = import ./lib/mk-system.nix {

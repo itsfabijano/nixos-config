@@ -24,6 +24,10 @@ in
 
     home.stateVersion = "25.05";
 
+    home.sessionPath = [
+        "$HOME/.cache/.bun/bin"
+    ];
+
     xdg.enable = true;
 
     home.sessionVariables = sessionVariables // envVars;

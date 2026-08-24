@@ -1,9 +1,8 @@
 { pkgs, pkgs-unstable, envVars, lib, ... }:
 
 let
-    mkOpencode = import ./mk-opencode.nix { inherit lib; pkgs = pkgs-unstable; };
-    opencode = mkOpencode { };
-    # opencode = pkgs-unstable.opencode;
+    opencode = pkgs-unstable.opencode;
+    opencodeCommand = lib.getExe opencode;
     opencodeConfigDir = envVars.OPENCODE_CONFIG_DIR or "/home/fabian/.config/opencode";
 in {
     home.packages = [ 
@@ -11,7 +10,7 @@ in {
 
         (pkgs.writeShellScriptBin "oc" ''
             #!/usr/bin/env bash
-            exec ${opencode}/bin/opencode attach http://localhost:4096 --dir "$PWD" "$@"
+            exec ${opencodeCommand} attach http://localhost:4096 --dir "$PWD" "$@"
         '')
     ];
 
@@ -28,7 +27,7 @@ in {
                 "PATH=%h/.nix-profile/bin:/etc/profiles/per-user/%u/bin:/run/current-system/sw/bin"
                 "HOME=%h"
             ];
-            ExecStart = "${opencode}/bin/opencode serve --port 4096 --hostname 0.0.0.0";
+            ExecStart = "${opencodeCommand} serve --port 4096 --hostname 0.0.0.0";
             Restart = "on-failure";
             RestartSec = 5;
         };

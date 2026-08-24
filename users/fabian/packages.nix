@@ -34,6 +34,7 @@ let
         go
         air
         templ
+        opencode
     ];
 in {
     home.packages = stable ++ unstable ++ extraHomePackages;
