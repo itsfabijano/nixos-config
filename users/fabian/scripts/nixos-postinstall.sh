@@ -51,5 +51,6 @@ else
   exit 1
 fi
 
-bun install -g --trust @opencode-ai/cli@beta
+echo $(pwd)
+bun run "$HOME/repos/personal/nixos-config/users/fabian/scripts/sync-global-bun-packages.ts"
 opencode2 service set hostname 0.0.0.0

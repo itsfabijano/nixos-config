@@ -12,5 +12,6 @@ if [[ "$(pwd)" == $HOME/repos || "$(pwd)" == $HOME/repos/* && "$(pwd)" != $HOME/
 fi
 tmux new-window -dn nvim 'nvim .'
 tmux new-window -dn scratch
+tmux rename-window "opencode"
 oc .
 clear
