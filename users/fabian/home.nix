@@ -14,7 +14,7 @@ in
         ./packages.nix
         ./tmux.nix
         ./unison.nix
-        ./opencode.nix
+        # ./opencode.nix
     ];
 
     nix.registry.devshells.to = {
@@ -39,6 +39,7 @@ in
         shellAliases = {
             vim = "nvim";
             cargodoc = "cargo doc --no-deps && (cd target/doc && python -m http.server 8000)";
+            oc = "opencode2";
         };
         oh-my-zsh = {
             enable = true;

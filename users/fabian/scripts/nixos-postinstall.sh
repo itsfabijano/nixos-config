@@ -50,3 +50,6 @@ else
   echo "Dotfiles setup completed with errors."
   exit 1
 fi
+
+bun install -g --trust @opencode-ai/cli@beta
+opencode2 service set hostname 0.0.0.0
