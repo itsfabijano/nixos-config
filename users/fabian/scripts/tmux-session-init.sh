@@ -10,6 +10,7 @@ if [[ "$(pwd)" == $HOME/repos || "$(pwd)" == $HOME/repos/* && "$(pwd)" != $HOME/
     clear
     return
 fi
+tmux new-window -dn nvim 'nvim .'
 tmux new-window -dn scratch
-vim .
+oc .
 clear
