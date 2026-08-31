@@ -36,6 +36,16 @@ use flake devshells#dotnet8
 ```
 2. Run `direnv allow` to enable the environment
 
+## Example GitConfig
+```
+[user]
+    name = itsfabijano
+    email = fabian.ehringer@gmx.net
+[core]
+    sshCommand = ssh -i ~/.ssh/id_rsa_github_personal -F /dev/null
+```
+
+
 ## TODO
 - how should I handle different email from differnt git accounts?
 - directory sharing with apple Virtualization
