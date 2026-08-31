@@ -52,5 +52,6 @@ else
 fi
 
 echo $(pwd)
-bun run "$HOME/repos/personal/nixos-config/users/fabian/scripts/sync-global-bun-packages.ts"
+mise install
+mise prune --tools
 opencode2 service set hostname 0.0.0.0

@@ -12,6 +12,7 @@ in
     imports = [
         ./scripts.nix
         ./packages.nix
+        ./mise.nix
         ./tmux.nix
         # ./unison.nix
         # ./opencode.nix
@@ -23,10 +24,6 @@ in
     };
 
     home.stateVersion = "25.05";
-
-    home.sessionPath = [
-        "$HOME/.cache/.bun/bin"
-    ];
 
     xdg.enable = true;
 
