@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "@opencode-ai/cli": "beta"
+    "@opencode-ai/cli": "beta",
+    "hunkdiff": "0.20.1"
   }
 }
