@@ -13,7 +13,7 @@ in
         ./scripts.nix
         ./packages.nix
         ./tmux.nix
-        ./unison.nix
+        # ./unison.nix
         # ./opencode.nix
     ];
 
