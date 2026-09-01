@@ -23,7 +23,6 @@ let
         k6
     ];
     unstable = with pkgs-unstable; [
-        bun
         pnpm
         neovim
         nodejs_26
