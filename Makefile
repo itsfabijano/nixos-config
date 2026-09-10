@@ -28,6 +28,8 @@ copy:
 switch:
 	$(MAKE) copy
 	sudo nixos-rebuild switch --impure --flake ".#${NIXNAME}"
+	mise install
+	mise prune --tools
 	nixos-postinstall
 
 clean:
@@ -39,6 +41,7 @@ clean:
 
 update:
 	nix flake update
+	mise install --force "npm:@opencode-ai/cli@beta"
 	$(MAKE) switch
 
 # bootstrap a brand new VM. The VM should have NixOS ISO on the CD drive

@@ -51,8 +51,3 @@ else
   exit 1
 fi
 
-echo $(pwd)
-mise install
-mise prune --tools
-opencode2 service set hostname 0.0.0.0
-mise install --force "npm:@opencode-ai/cli@beta"
