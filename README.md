@@ -49,3 +49,9 @@ use flake devshells#dotnet8
 ## TODO
 - how should I handle different email from differnt git accounts?
 - directory sharing with apple Virtualization
+- move VM-only boot, firewall, and SSH settings out of `modules/basic-config.nix`
+- add a hardened remote dev machine profile with key-only SSH access
+- replace the committed password hash with SSH key provisioning
+- replace the disk-specific VM bootstrap with `disko` and `nixos-anywhere` for remote servers
+- stop copying private SSH keys to provisioned machines
+- replace the impure `/tmp/nixos-config/.variables.json` configuration
