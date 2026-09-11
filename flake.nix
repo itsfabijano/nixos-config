@@ -33,11 +33,11 @@
         devShells.${system} = mkDevshells { inherit system; };
 
         nixosConfigurations = { 
-            vm-aarch64 = mkSystem "vm-aarch64" {
+            vm-aarch64 = mkSystem "vm-aarch64-utm-avf" {
                 system = "aarch64-linux";
             };
 
-            vm-aarch64-work = mkSystem "vm-aarch64-work" {
+            vm-aarch64-work = mkSystem "vm-aarch64-utm-avf" {
                 system = "aarch64-linux";
                 envVars = {
                     OPENCODE_CONFIG = "/home/fabian/repos/sii/opencode-config/opencode.json";

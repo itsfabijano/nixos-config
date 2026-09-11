@@ -23,6 +23,6 @@ in systemFunc {
             home-manager.extraSpecialArgs = { inherit pkgs-unstable envVars; extraHomePackages = []; };
             home-manager.users.fabian = import ../users/fabian/home.nix;
         }
-        ../machines/vm-aarch64-utm-avf.nix
+        machineConfig
     ];
 }
