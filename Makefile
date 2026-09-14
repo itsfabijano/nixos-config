@@ -39,12 +39,8 @@ clean:
 	nix-store --optimise
 	home-manager expire-generations "-7 days"
 
-mise-update:
-	mise install --force "npm:@opencode-ai/cli@beta"
-
 update:
 	nix flake update
-	$(MAKE) mise-update
 	$(MAKE) switch
 
 # bootstrap a brand new VM. The VM should have NixOS ISO on the CD drive

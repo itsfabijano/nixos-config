@@ -11,8 +11,8 @@
             tools = {
                 bun = "1.4.0";
                 hunk = "0.20.1";
-                "npm:@opencode-ai/cli" = {
-                    version = "beta";
+                "npm:@opencode/cli" = {
+                    version = "2.0.3";
                     bun_args = "--trust";
                 };
             };
