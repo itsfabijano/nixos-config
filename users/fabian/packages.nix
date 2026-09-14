@@ -7,7 +7,7 @@ let
         python3Packages.pip
         fzf
         zathura
-        dotnetCorePackages.dotnet_10.sdk
+        dotnet-sdk_10
         csharp-ls
         gh
         btop
