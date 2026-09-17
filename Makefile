@@ -29,7 +29,7 @@ switch:
 	$(MAKE) copy
 	sudo nixos-rebuild switch --impure --flake ".#${NIXNAME}"
 	mise install
-	mise prune --tools
+	mise prune --tools --yes
 	nixos-postinstall
 
 clean:
